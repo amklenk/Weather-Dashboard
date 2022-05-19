@@ -35,4 +35,4 @@ Plan:
   * local storage
 
 
-  
+  got icons from https://github.com/yuvraaaj/openweathermap-api-icons

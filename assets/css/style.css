@@ -70,19 +70,28 @@ header {
 
 /*styling for uvi*/
 #low-uv {
-background: green;
+background: rgba(63, 195, 128, 1);
+border-radius: 5px;
 }
 
 #mod-uv {
-    background: yellow;
+    background:rgba(9, 9, 121, .7);
+    border-radius: 3px;
 }
 
 #high-uv {
-    background: orange;
+    background: rgba(255, 255, 159, 1);
+    border-radius: 3px;
+}
+
+#vhigh-uv {
+background: rgba(250, 190, 88, 1);
+border-radius: 35px;
 }
 
 #extreme-uv {
-    background: red;
+    background:rgba(242, 38, 19, .7);
+    border-radius: 3px;
 }
 /*end uvi styling*/
 

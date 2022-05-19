@@ -48,14 +48,13 @@ var getWeatherInfo = function (lat, lon, city) {
     fetch(apiUrl).then(function (response) {
         if (response.ok) {
             response.json().then(function (data) {
-                //    var icon = data.current.weather.icon;
-                //    console.log(icon);
+               var icon = data.current.weather[0].icon;
                 var temp = data.current.temp;
                 var wind = data.current.wind_speed;
                 var humid = data.current.humidity;
                 var uvi = data.current.uvi;
                 var dailyForecast = data.daily;
-                displayWeather(city, temp, wind, humid, uvi, dailyForecast);
+                displayWeather(city, icon, temp, wind, humid, uvi, dailyForecast);
             });
         } else {
             alert("Error: Data Not Found");
@@ -66,9 +65,9 @@ var getWeatherInfo = function (lat, lon, city) {
         });
 };
 
-var displayWeather = function (city, temp, wind, humid, uvi, dailyForecast) {
+var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast) {
     weatherDivEl.innerHTML = "";
-
+console.log(icon);
     var titleDivEl = document.createElement("div");
     titleDivEl.setAttribute("class", "card forecast col-12");
     weatherDivEl.append(titleDivEl);
@@ -84,16 +83,29 @@ var displayWeather = function (city, temp, wind, humid, uvi, dailyForecast) {
 
     //(Kelvin − 273.15) × 9/5 + 32
     var temp = Math.floor((parseInt(temp) - 273.15) * (9 / 5) + 32);
-    var infoArray = ["Temp: " + temp + "°F", "Wind: " + wind + " MPH", "Humidity: " + humid + " %", "UV Index: " + uvi];
+    var infoArray = ["Temp: " + temp + "°F", "Wind: " + wind + " MPH", "Humidity: " + humid + " %"];
     for (var i = 0; i < infoArray.length; i++) {
         var infoItem = document.createElement("p");
         infoItem.setAttribute("class", "card-text");
         infoItem.innerHTML = infoArray[i]; //thought about adding span here just around variable, but not sure how to do that
         weatherInfoDivEl.appendChild(infoItem);
-        //    if (parseInt(uvi) < 3) {
-
-        //    }
     }
+    var infoItemUV = document.createElement("p");
+    infoItemUV.innerHTML = "UV Index: " + "<span>" + uvi + "</span>";
+    infoItemUV.setAttribute("class", "card-text");
+    weatherInfoDivEl.appendChild(infoItemUV);
+    var spanUV = document.querySelector("span");
+    if (uvi < "3") {
+        spanUV.setAttribute("id", "low-uv");
+    } else if (uvi >= "3" && uvi <= "5"){
+        spanUV.setAttribute("id", "mod-uv");
+    } else if (uvi >= "6" && uvi <= "7") {
+        spanUV.setAttribute("id", "high-uv");
+    } else if (uvi >= "8" && uvi <= "10"){
+        spanUV.setAttribute("id", "vhigh-uv");
+    } else if (uvi >= "11"){
+        spanUV.setAttribute("id", "extreme");
+    };
 
     var fiveDayHeaderDivEl = document.createElement("div");
     fiveDayHeaderDivEl.setAttribute("class", "col-12 mt-20");
@@ -115,7 +127,7 @@ var displayWeather = function (city, temp, wind, humid, uvi, dailyForecast) {
         var forecastInfoDiv = document.createElement("div");
         forecastInfoDiv.setAttribute("class", "card-body");
         cardDivEl.appendChild(forecastInfoDiv);
-        
+
         var tempF = Math.floor((parseInt(dailyForecast[i].temp.day) - 273.15) * (9 / 5) + 32);
         var windF = dailyForecast[i].wind_speed;
         var humidF = dailyForecast[i].humidity;
