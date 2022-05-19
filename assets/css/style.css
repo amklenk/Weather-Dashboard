@@ -1,0 +1,89 @@
+/*variables*/
+
+/*browser styling*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*browser end*/
+
+/*body styling*/
+.main {
+    font-family: "Oswald", sans-serif;
+    color: rgba(2, 0, 36, 1);
+}
+
+/*header styling*/
+header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    248deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  margin-bottom: 20px;
+}
+
+.header-title {
+  padding: 10px;
+  font-size: 40px;
+  color: white;
+}
+/*header end*/
+
+/*main styling*/
+.main {
+    background: rgba(2, 0, 36, 1);
+  }
+
+  .divrow {
+      width: 90vw;
+  }
+
+  .btn {
+      background-color:rgba(0, 212, 255, 1);
+  }
+
+  .five-day-header {
+      color: white;
+      margin-top: 10px;
+  }
+
+#search-header {
+    font-size: 25px;
+}
+
+#search-btn{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+/*styling for uvi*/
+#low-uv {
+background: green;
+}
+
+#mod-uv {
+    background: yellow;
+}
+
+#high-uv {
+    background: orange;
+}
+
+#extreme-uv {
+    background: red;
+}
+/*end uvi styling*/
+
+  /*main end*/
