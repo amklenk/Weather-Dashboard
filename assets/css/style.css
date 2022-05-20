@@ -10,8 +10,8 @@
 
 /*body styling*/
 .main {
-    font-family: "Oswald", sans-serif;
-    color: rgba(2, 0, 36, 1);
+  font-family: "Oswald", sans-serif;
+  color: rgba(2, 0, 36, 1);
 }
 
 /*header styling*/
@@ -43,61 +43,79 @@ header {
 
 /*main styling*/
 .main {
-    background: rgba(2, 0, 36, 1);
-  }
-
-  .divrow {
-      width: 90vw;
-  }
-
-  .btn {
-      background-color:rgba(0, 212, 255, 1);
-  }
-  
-  .icon-image{
-      height: 30px;
-      width: 30px;
-  }
-
-  .five-day-header {
-      color: white;
-      margin-top: 10px;
-  }
-
-#search-header {
-    font-size: 25px;
+  background: rgba(2, 0, 36, 1);
 }
 
-#search-btn{
-    margin-top: 10px;
-    margin-left: 10px;
+.divrow {
+  width: 90vw;
+}
+
+
+
+.card-head-back {
+    background-color: rgba(0, 212, 255, .5);
+}
+
+.icon-image {
+  height: 50px;
+  width: 50px;
+  margin: 0 auto;
+}
+
+.five-day-header {
+  color: white;
+  margin-top: 10px;
+}
+
+.forecast-head{
+font-size: 20px;
+}
+
+#search-header {
+  font-size: 25px;
+}
+
+/* #city-list{
+    display: flex;
+} */
+
+#search-btn, #city-btn {
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: rgba(0, 212, 255, 1);
+}
+
+#city-btn {
+width: 80%;
+border-radius: 5px;
+margin: 10px auto;
 }
 
 /*styling for uvi*/
 #low-uv {
-background: rgba(63, 195, 128, 1);
-border-radius: 5px;
+  background: rgba(63, 195, 128, 1);
+  border-radius: 5px;
 }
 
 #mod-uv {
-    background:rgba(9, 9, 121, .7);
-    border-radius: 3px;
+  background: rgba(9, 9, 121, 0.7);
+  border-radius: 3px;
 }
 
 #high-uv {
-    background: rgba(255, 255, 159, 1);
-    border-radius: 3px;
+  background: rgba(255, 255, 159, 1);
+  border-radius: 3px;
 }
 
 #vhigh-uv {
-background: rgba(250, 190, 88, 1);
-border-radius: 35px;
+  background: rgba(250, 190, 88, 1);
+  border-radius: 35px;
 }
 
 #extreme-uv {
-    background:rgba(242, 38, 19, .7);
-    border-radius: 3px;
+  background: rgba(242, 38, 19, 0.7);
+  border-radius: 3px;
 }
 /*end uvi styling*/
 
-  /*main end*/
+/*main end*/

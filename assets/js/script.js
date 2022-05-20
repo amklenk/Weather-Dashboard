@@ -67,20 +67,21 @@ var getWeatherInfo = function (lat, lon, city) {
 
 var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast) {
     weatherDivEl.innerHTML = "";
-console.log(icon);
+
+    var cityButtonEl = document.createElement("button");
+    cityButtonEl.setAttribute("id", "city-btn");
+    cityButtonEl.textContent = city;
+    cityDivEl.appendChild(cityButtonEl);
+//pass to local storage function here
+
     var titleDivEl = document.createElement("div");
     titleDivEl.setAttribute("class", "card forecast col-12");
     weatherDivEl.append(titleDivEl);
 
     var weatherTitle = document.createElement("h3");
-    weatherTitle.setAttribute("class", "card-header today-date");
+    weatherTitle.setAttribute("class", "card-header card-head-back today-date");
     weatherTitle.innerHTML = city + " (" + m + ")" + " <img class = 'icon-image' src = './assets/images/icons/" + icon + ".png' >";
     titleDivEl.append(weatherTitle);
-
-    // var iconImage = document.createElement("img");
-    // iconImage.setAttribute("src", "./assets/images/icons/" + icon +".png");
-    // iconImage.setAttribute("class", "icon-image");
-    // titleDivEl.appendChild(iconImage);
 
     var weatherInfoDivEl = document.createElement("div");
     weatherInfoDivEl.setAttribute("class", "card-body");
@@ -123,15 +124,20 @@ console.log(icon);
         weatherDivEl.appendChild(cardDivEl);
 
         var forecastDate = document.createElement("h4");
-        forecastDate.setAttribute("class", "card-header");
-        forecastDate.textContent = "Date Plus" + [i];
-        // var newM = moment().format('L').add([i], "days");
-        // console.log(newM);
+        forecastDate.setAttribute("class", "card-header card-head-back forecast-head");
+        var newM = moment().add([i], "d").format('L');
+        forecastDate.textContent = newM;
         cardDivEl.append(forecastDate);
 
         var forecastInfoDiv = document.createElement("div");
         forecastInfoDiv.setAttribute("class", "card-body");
         cardDivEl.appendChild(forecastInfoDiv);
+
+        var iconF = dailyForecast[i].weather[0].icon;
+        var forecastImg = document.createElement("img");
+        forecastImg.setAttribute("class", "icon-image");
+        forecastImg.setAttribute("src", "./assets/images/icons/" + iconF + ".png");
+        forecastInfoDiv.append(forecastImg);
 
         var tempF = Math.floor((parseInt(dailyForecast[i].temp.day) - 273.15) * (9 / 5) + 32);
         var windF = dailyForecast[i].wind_speed;
@@ -146,3 +152,9 @@ console.log(icon);
     }
 };
 }
+
+//pass city into the local storage function
+//local key:value city:name
+
+//retrieving function will recreate the button and feed the city name into the search function
+//onlick event for the buttons
