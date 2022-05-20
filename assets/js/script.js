@@ -5,6 +5,7 @@ var searchBtnEl = document.querySelector("#search-btn");
 var cityDivEl = document.querySelector("#city-list");
 var weatherDivEl = document.querySelector("#weather-div");
 var m = moment().format('L');
+var cityButtonEl;
 
 //functions
 //function that handles user submission and calls on lat/lon api
@@ -72,7 +73,7 @@ var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast
     cityButtonEl.setAttribute("id", "city-btn");
     cityButtonEl.textContent = city;
     cityDivEl.appendChild(cityButtonEl);
-//pass to local storage function here
+    saveCity(city);//do I need this or is the handler enough?
 
     var titleDivEl = document.createElement("div");
     titleDivEl.setAttribute("class", "card forecast col-12");
@@ -93,7 +94,7 @@ var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast
     for (var i = 0; i < infoArray.length; i++) {
         var infoItem = document.createElement("p");
         infoItem.setAttribute("class", "card-text");
-        infoItem.innerHTML = infoArray[i]; //thought about adding span here just around variable, but not sure how to do that
+        infoItem.innerHTML = infoArray[i]; 
         weatherInfoDivEl.appendChild(infoItem);
     }
     var infoItemUV = document.createElement("p");
@@ -143,7 +144,6 @@ var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast
         var windF = dailyForecast[i].wind_speed;
         var humidF = dailyForecast[i].humidity;
         var infoArrayForecast = ["Temp: " + tempF + "°F", "Wind: " + windF + " MPH", "Humidity: " + humidF + " %"];
-        console.log(infoArrayForecast);
         for (var j = 0; j < infoArrayForecast.length; j++) {
             var infoItemForecast = document.createElement("p");
             infoItemForecast.setAttribute("class", "card-text");
@@ -151,10 +151,16 @@ var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast
             forecastInfoDiv.appendChild(infoItemForecast);
     }
 };
-}
+};
 
-//pass city into the local storage function
-//local key:value city:name
+var saveCity = function (city) {
+var cityArray= JSON.parse(window.localStorage.getItem("cityArray")) || [];
+var cityName = city;
+cityArray.push(cityName);
+localStorage.setItem("cityArray", JSON.stringify(cityArray));
+};
 
-//retrieving function will recreate the button and feed the city name into the search function
-//onlick event for the buttons
+//the load function will take the array out of local storage
+// it will loop over the array feed each city name through the search to render it's weather
+
+//when each button is clicked, the weather will also render

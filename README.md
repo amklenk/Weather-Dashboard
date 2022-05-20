@@ -5,7 +5,7 @@ AS A traveler
 I WANT to see the weather outlook for multiple cities
 SO THAT I can plan a trip accordingly
 
-Requirements: 
+Requirements:
 GIVEN a weather dashboard with form inputs
 WHEN I search for a city
 THEN I am presented with current and future conditions for that city and that city is added to the search history
@@ -18,21 +18,15 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
-Plan: 
+Plan:
 
 1. Create WireBoard -Done on Figma
 2. Create basic HTML and what will be dynamic - Done
 3. Code CSS - Done
-4.Comment out dynamic to save information but not show on page
-5. JS
-  * fetch api DONE
-  * Submission handler DONE
-  * display function for main box and cards
-    * city name (from first api) and date (moment) icon?
-
-
-  * display for zipcodes under submission
-  * local storage
-
-
-  got icons from https://github.com/yuvraaaj/openweathermap-api-icons
+   4.Comment out dynamic to save information but not show on page
+4. JS
+- fetch api DONE
+- Submission handler DONE
+- display function for main box and cards
+  - city name (from first api) and date (moment) icon?
+- local storage
