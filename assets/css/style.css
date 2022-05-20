@@ -53,6 +53,11 @@ header {
   .btn {
       background-color:rgba(0, 212, 255, 1);
   }
+  
+  .icon-image{
+      height: 30px;
+      width: 30px;
+  }
 
   .five-day-header {
       color: white;

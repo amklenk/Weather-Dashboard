@@ -24,7 +24,7 @@ userFormEl.addEventListener("submit", formSubmitHandler);
 
 //function that fetches from api to get lat and lon from city name
 var inputCity = function (city) {
-    var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=eb850d2c4486fceb7521b3ec8f51fc59"
+    var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=eb850d2c4486fceb7521b3ec8f51fc59"
     fetch(apiUrl)
         .then(function (response) {
             if (response.ok) {
@@ -74,8 +74,13 @@ console.log(icon);
 
     var weatherTitle = document.createElement("h3");
     weatherTitle.setAttribute("class", "card-header today-date");
-    weatherTitle.textContent = city + " (" + m + ")";
+    weatherTitle.innerHTML = city + " (" + m + ")" + " <img class = 'icon-image' src = './assets/images/icons/" + icon + ".png' >";
     titleDivEl.append(weatherTitle);
+
+    // var iconImage = document.createElement("img");
+    // iconImage.setAttribute("src", "./assets/images/icons/" + icon +".png");
+    // iconImage.setAttribute("class", "icon-image");
+    // titleDivEl.appendChild(iconImage);
 
     var weatherInfoDivEl = document.createElement("div");
     weatherInfoDivEl.setAttribute("class", "card-body");
