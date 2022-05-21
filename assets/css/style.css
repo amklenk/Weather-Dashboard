@@ -79,13 +79,13 @@ font-size: 20px;
     display: flex;
 } */
 
-#search-btn, #city-btn {
+#search-btn, .city-btn {
   margin-top: 10px;
   margin-left: 10px;
   background-color: rgba(0, 212, 255, 1);
 }
 
-#city-btn {
+.city-btn {
 width: 80%;
 border-radius: 5px;
 margin: 10px auto;

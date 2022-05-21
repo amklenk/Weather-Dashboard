@@ -70,10 +70,9 @@ var getWeatherInfo = function (lat, lon, city) {
 var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast) {
     weatherDivEl.innerHTML = "";
 
-    // cityDivEl.setAttribute("class", "border-top border-white border-2");
-
-    var cityButtonEl = document.createElement("button");
-    cityButtonEl.setAttribute("id", "city-btn");
+    cityButtonEl = document.createElement("button");
+    cityButtonEl.setAttribute("class", "city-btn");
+    cityButtonEl.setAttribute("id", city);
     cityButtonEl.textContent = city;
     cityDivEl.appendChild(cityButtonEl);
     saveCity(city);
@@ -174,14 +173,13 @@ var loadCity = function () {
         inputCity(savedCities[i])
 };
 };
-
 loadCity();
 
 //click event that takes the name from the city button and feeds that name through the inputCity function
-var buttonHandler = function(event) {
-    console.log(event);
-    console.log("Click!");
-    var cityName = cityButtonEl.value().trim();
-    console.log(cityName);
-}
-cityButtonEl.addEventListener('click', buttonHandler);
+//had to use jQuery here to target each button
+$("body").on("click",".city-btn", function(){
+    console.log("click!");
+    var buttonText = $(".city-btn").text();
+    console.log(buttonText);
+    // inputCity(buttonText);
+});
