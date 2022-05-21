@@ -162,5 +162,13 @@ localStorage.setItem("cityArray", JSON.stringify(cityArray));
 
 //the load function will take the array out of local storage
 // it will loop over the array feed each city name through the search to render it's weather
+var loadCity = function () {
+    var savedCities = JSON.parse(localStorage.getItem("cityArray")) || [];
+    var savedCitiesSort = savedCities.sort();
+    for (var i = 0; i < savedCitiesSort.length; i++) {
+        inputCity(savedCitiesSort[i])
+};
+};
 
-//when each button is clicked, the weather will also render
+loadCity();
+
