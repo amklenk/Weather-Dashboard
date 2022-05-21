@@ -43,7 +43,7 @@ var inputCity = function (city) {
         });
 };
 
-//function that displays current weather using info from inputCity and current weather api
+//function that uses the latitude and longitude to obtain the current data and 5-day forecast data
 var getWeatherInfo = function (lat, lon, city) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&appid=eb850d2c4486fceb7521b3ec8f51fc59";
     fetch(apiUrl).then(function (response) {
@@ -66,14 +66,17 @@ var getWeatherInfo = function (lat, lon, city) {
         });
 };
 
+//function that renders the current weather and 5-day forecast
 var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast) {
     weatherDivEl.innerHTML = "";
+
+    // cityDivEl.setAttribute("class", "border-top border-white border-2");
 
     var cityButtonEl = document.createElement("button");
     cityButtonEl.setAttribute("id", "city-btn");
     cityButtonEl.textContent = city;
     cityDivEl.appendChild(cityButtonEl);
-    saveCity(city);//do I need this or is the handler enough?
+    saveCity(city);
 
     var titleDivEl = document.createElement("div");
     titleDivEl.setAttribute("class", "card forecast col-12");
@@ -94,7 +97,7 @@ var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast
     for (var i = 0; i < infoArray.length; i++) {
         var infoItem = document.createElement("p");
         infoItem.setAttribute("class", "card-text");
-        infoItem.innerHTML = infoArray[i]; 
+        infoItem.innerHTML = infoArray[i];
         weatherInfoDivEl.appendChild(infoItem);
     }
     var infoItemUV = document.createElement("p");
@@ -153,22 +156,32 @@ var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast
 };
 };
 
+//function that saves the city names to an array in local storage
 var saveCity = function (city) {
 var cityArray= JSON.parse(window.localStorage.getItem("cityArray")) || [];
 var cityName = city;
-cityArray.push(cityName);
+if (!cityArray.includes(cityName)){
+ cityArray.push(cityName);
+}
 localStorage.setItem("cityArray", JSON.stringify(cityArray));
 };
 
-//the load function will take the array out of local storage
-// it will loop over the array feed each city name through the search to render it's weather
+//the function that takes the array out of local storage and calls on the inputCity function to render the city buttons and weather
 var loadCity = function () {
+    cityDivEl.innerHTML = " ";
     var savedCities = JSON.parse(localStorage.getItem("cityArray")) || [];
-    var savedCitiesSort = savedCities.sort();
-    for (var i = 0; i < savedCitiesSort.length; i++) {
-        inputCity(savedCitiesSort[i])
+    for (var i = 0; i < savedCities.length; i++) {
+        inputCity(savedCities[i])
 };
 };
 
 loadCity();
 
+//click event that takes the name from the city button and feeds that name through the inputCity function
+var buttonHandler = function(event) {
+    console.log(event);
+    console.log("Click!");
+    var cityName = cityButtonEl.value().trim();
+    console.log(cityName);
+}
+cityButtonEl.addEventListener('click', buttonHandler);

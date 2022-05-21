@@ -1,22 +1,15 @@
 # Weather-Dashboard
 
-User Story
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
+## Description
 
-Requirements:
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
+This project was created to show the user the weather outlook for multiple cities so that they can plan a trip accordingly. This is done by fulfilling the following requirements:
+* When the start button is clicked, the timer starts and the first question is shown.
+* When the user searches for a city, they are presented with current and future conditions for that city and it is added to the search history.
+* When the user views the current weather conditions for a city, they are presented with the city name, the date, an icon representation of the weather conditions, the temperature, the humidity, the wind speed, and the UV index.
+* When the user views the UV index, they are presented with a color that tells them if the conditions are favorable, moderate, or severe.
+* When the user views future weather conditions for a city, they are presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
+* When the user clicks on a city in the search history, they are again presented with current and future conditions for that city (NOT MET).
+
 
 Plan:
 
