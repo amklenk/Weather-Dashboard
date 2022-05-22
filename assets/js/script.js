@@ -70,12 +70,15 @@ var getWeatherInfo = function (lat, lon, city) {
 var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast) {
     weatherDivEl.innerHTML = "";
 
+    cityButtonRepeatEl = document.getElementById(city);
+    if (!cityButtonRepeatEl){
     cityButtonEl = document.createElement("button");
     cityButtonEl.setAttribute("class", "city-btn");
     cityButtonEl.setAttribute("id", city);
     cityButtonEl.textContent = city;
     cityDivEl.appendChild(cityButtonEl);
     saveCity(city);
+};
 
     var titleDivEl = document.createElement("div");
     titleDivEl.setAttribute("class", "card forecast col-12");
@@ -104,6 +107,7 @@ var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast
     infoItemUV.setAttribute("class", "card-text");
     weatherInfoDivEl.appendChild(infoItemUV);
     var spanUV = document.querySelector("span");
+    //these don't work all of the time, not sure why
     if (uvi < "3") {
         spanUV.setAttribute("id", "low-uv");
     } else if (uvi >= "3" && uvi <= "5"){
@@ -113,7 +117,7 @@ var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast
     } else if (uvi >= "8" && uvi <= "10"){
         spanUV.setAttribute("id", "vhigh-uv");
     } else if (uvi >= "11"){
-        spanUV.setAttribute("id", "extreme");
+        spanUV.setAttribute("id", "extreme-uv");
     };
 
     var fiveDayHeaderDivEl = document.createElement("div");
@@ -123,7 +127,7 @@ var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast
 
     for (var i = 1; i< dailyForecast.length - 2; i++){
         var cardDivEl = document.createElement("div");
-        cardDivEl.setAttribute("class", "card col-2");
+        cardDivEl.setAttribute("class", "card col-sm-12 col-lg-2 mb-2");
         weatherDivEl.appendChild(cardDivEl);
 
         var forecastDate = document.createElement("h4");
@@ -179,7 +183,7 @@ loadCity();
 //had to use jQuery here to target each button
 $("body").on("click",".city-btn", function(){
     console.log("click!");
-    var buttonText = $(".city-btn").text();
+    var buttonText = $(this).text();
     console.log(buttonText);
-    // inputCity(buttonText);
+    inputCity(buttonText);
 });

@@ -50,10 +50,8 @@ header {
   width: 90vw;
 }
 
-
-
 .card-head-back {
-    background-color: rgba(0, 212, 255, .5);
+  background-color: rgba(0, 212, 255, 0.5);
 }
 
 .icon-image {
@@ -67,28 +65,30 @@ header {
   margin-top: 10px;
 }
 
-.forecast-head{
-font-size: 20px;
+.forecast-head {
+  font-size: 17px;
+}
+
+.city-btn {
+  width: 80%;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 #search-header {
   font-size: 25px;
 }
 
-/* #city-list{
-    display: flex;
-} */
+#city-list{
+    border-top: 2px solid white;
+    margin-top: 10px;
+}
 
-#search-btn, .city-btn {
+#search-btn,
+.city-btn {
   margin-top: 10px;
   margin-left: 10px;
   background-color: rgba(0, 212, 255, 1);
-}
-
-.city-btn {
-width: 80%;
-border-radius: 5px;
-margin: 10px auto;
 }
 
 /*styling for uvi*/
@@ -109,7 +109,7 @@ margin: 10px auto;
 
 #vhigh-uv {
   background: rgba(250, 190, 88, 1);
-  border-radius: 35px;
+  border-radius: 3px;
 }
 
 #extreme-uv {
@@ -119,3 +119,4 @@ margin: 10px auto;
 /*end uvi styling*/
 
 /*main end*/
+
