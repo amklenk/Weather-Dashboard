@@ -131,7 +131,7 @@ var displayWeather = function (city, icon, temp, wind, humid, uvi, dailyForecast
         weatherDivEl.appendChild(cardDivEl);
 
         var forecastDate = document.createElement("h4");
-        forecastDate.setAttribute("class", "card-header card-head-back forecast-head");
+        forecastDate.setAttribute("class", "card-header card-head-back forecast-head px-auto");
         var newM = moment().add([i], "d").format('L');
         forecastDate.textContent = newM;
         cardDivEl.append(forecastDate);

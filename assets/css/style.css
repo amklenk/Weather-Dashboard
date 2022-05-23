@@ -66,13 +66,13 @@ header {
 }
 
 .forecast-head {
-  font-size: 17px;
+  font-size: 15px;
 }
 
 .city-btn {
   width: 80%;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-left: 10px;
 }
 
 #search-header {
@@ -87,7 +87,6 @@ header {
 #search-btn,
 .city-btn {
   margin-top: 10px;
-  margin-left: 10px;
   background-color: rgba(0, 212, 255, 1);
 }
 
